@@ -21,7 +21,7 @@ const Header = () => (
           style={{
             color: 'white',
             textDecoration: 'none',
-            margin: '30'
+            margin: '15'
           }}
         >
           Home
@@ -31,7 +31,7 @@ const Header = () => (
           style={{
             color: 'black',
             textDecoration: 'none',
-            margin: '30'
+            margin: '15'
           }}
         >
           Dr.O. Stefano Deligia
@@ -41,17 +41,27 @@ const Header = () => (
           style={{
             color: 'black',
             textDecoration: 'none',
-            margin: '30'
+            margin: '15'
           }}
         >
           L'Osteopatia
+        </Link>
+        <Link
+          to="/news"
+          style={{
+            color: 'black',
+            textDecoration: 'none',
+            margin: '15'
+          }}
+        >
+          News
         </Link>
         <Link
           to="/contatti"
           style={{
             color: 'black',
             textDecoration: 'none',
-            margin: '30'
+            margin: '15'
           }}
         >
           Contatti
