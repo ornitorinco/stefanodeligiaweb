@@ -4,10 +4,10 @@ import { Row, Col, Icon } from 'antd';
 class Entry extends React.Component {
   render() {
     return <Row gutter={24} >
-	    		<Col span={10} style={{textAlign:"right"}}>
+	    		<Col span={11} style={{textAlign:"right"}}>
 	    			<p className="label">{this.props.label}</p>
 	    		</Col>
-	    		<Col span={2} >
+	    		<Col span={1} >
 	    			<Icon type={this.props.type} />
 	    		</Col>
 	    		<Col span={12} textAlign="left">
