@@ -20,7 +20,11 @@
 	margin-bottom: 20px;
 }
 
-
 .blockRow .activity {
 	margin-bottom: 30px;
+}
+
+.languageTable th,
+.languageTable td{
+	font-size: small;
 }
