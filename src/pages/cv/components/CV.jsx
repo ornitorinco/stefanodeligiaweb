@@ -4,9 +4,9 @@ import Body from './body';
 
 class CV extends React.Component {
   render() {
-    return  <div>
+    return  <div >
     <CvHeader name={this.props.name} />
-    <Body />
+    <Body/>
     </div>
   }
 }

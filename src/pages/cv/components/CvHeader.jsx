@@ -7,7 +7,7 @@ class CvHeader extends React.Component {
     return <Row gutter={24} className="cvHeaderDiv">
 	    
 			<Col span={12}><h2>{this.props.name}</h2></Col>
-			<Col span={4} offset={8}><Avatar size={64} src={profile} /></Col>
+			<Col span={4} offset={8}><Avatar size={128} shape="square" src={profile} /></Col>
 	      
 	</Row>
   }

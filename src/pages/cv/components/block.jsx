@@ -1,5 +1,6 @@
 import React from 'react'
 import { Timeline, Row, Col } from 'antd';
+import DescriptionRow from './description_row';
 
 class Block extends React.Component {
   render() {
@@ -17,30 +18,9 @@ class Block extends React.Component {
 				    </Row>
 	    		</Timeline.Item>
 	    		<Timeline.Item color="blue">
-				    <Row gutter={24} className="blockRow">
-				    	<Col span={7} style={{textAlign:"right"}} className="label">
-					    	{this.props.descriptionLabel}
-					    </Col>
-					    <Col span={17} className="description">
-					    	{this.props.description}
-					    </Col>
-				    </Row>
-				    <Row gutter={24} className="blockRow">				    
-				    	<Col span={7} style={{textAlign:"right"}} className="label">
-					    	{this.props.addressLabel}
-					    </Col>
-					    <Col span={17} className="address">
-					    	{this.props.address}
-					    </Col>
-				    </Row>
-				    <Row gutter={24} className="blockRow">
-				    	<Col span={7} style={{textAlign:"right"}} className="label">
-					    	{this.props.activityLabel}
-					    </Col>
-					    <Col span={17} className="activity">
-					    	{this.props.activity}
-					    </Col>
-				    </Row>
+	    			<DescriptionRow descriptionLabel={this.props.descriptionLabel} description={this.props.description} descriptionClass="description" />
+	    			<DescriptionRow descriptionLabel={this.props.addressLabel} description={this.props.address} descriptionClass="address" />
+	    			<DescriptionRow descriptionLabel={this.props.activityLabel} description={this.props.activity} descriptionClass="activity" />
 	    		</Timeline.Item>
     		</Row>
   }
