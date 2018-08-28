@@ -1,25 +1,24 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import './header.css'
+
+const backgroundColor = '#5D5C61';
+const fontColor = '#938E94';
+const fontColorHome = '#B1A296';
 
 const Header = () => (
-  <div
+  <div className='header'
     style={{
-      background: '#79cdcd',
+      background: backgroundColor,
       marginBottom: '1.45rem',
     }}
   >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 1200,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
+  <div/>
         <Link
+          className='link'
           to="/"
           style={{
-            color: 'white',
+            color: fontColorHome,
             textDecoration: 'none',
             margin: '15'
           }}
@@ -27,19 +26,21 @@ const Header = () => (
           Home
         </Link>
         <Link
-          to="/myProfile"
+          className='link'
+          to="/curriculum"
           style={{
-            color: 'black',
+            color: fontColor,
             textDecoration: 'none',
             margin: '15'
           }}
         >
-          Dr.O. Stefano Deligia
+          Profilo
         </Link>
         <Link
+          className='link'
           to="/osteopatia"
           style={{
-            color: 'black',
+            color: fontColor,
             textDecoration: 'none',
             margin: '15'
           }}
@@ -47,9 +48,10 @@ const Header = () => (
           L'Osteopatia
         </Link>
         <Link
+          className='link'
           to="/news"
           style={{
-            color: 'black',
+            color: fontColor,
             textDecoration: 'none',
             margin: '15'
           }}
@@ -57,17 +59,18 @@ const Header = () => (
           News
         </Link>
         <Link
+          className='link'
           to="/contatti"
           style={{
-            color: 'black',
+            color: fontColor,
             textDecoration: 'none',
             margin: '15'
           }}
         >
           Contatti
         </Link>
-      </h1>
-    </div>
+
+  <div/>
   </div>
 )
 

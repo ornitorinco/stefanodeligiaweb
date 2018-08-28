@@ -23,7 +23,7 @@ const Keys = ["1","2","3", "4"];
 
 class Body extends React.Component {
   render() {
-    return  <Collapse activeKey = {Keys}>
+    return  <Collapse >
     			<Panel header="Informazioni personali" key="1">      
 	    			<PersonalInfo />
     			</Panel>
