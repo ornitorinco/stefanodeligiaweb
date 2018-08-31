@@ -1,9 +1,11 @@
 const images = {
 profile:  require('./profile.png'),
-osteopathy: require('./osteopathy.jpg')
-    //comments: require('./comments.png'),
-   //image1: require('./image1.jpg'),
-   //image2: require('./image2.jpg'),
+addome: require('./addome.jpg'),
+colonna: require('./colonna.jpg'),
+cranio: require('./cranio.jpg'),
+cuore: require('./cuore.jpg'),
+mano: require('./mano.jpg'),
+teschio: require('./teschio.jpg')
 };
 
 export default images;

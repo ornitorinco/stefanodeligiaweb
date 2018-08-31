@@ -1,10 +1,11 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import './header.css'
+import { background, font, specialFont } from '../../layouts/colors.css';
 
-const backgroundColor = '#5D5C61';
-const fontColor = '#938E94';
-const fontColorHome = '#B1A296';
+const backgroundColor = background;
+const fontColor = font;
+const fontColorHome = specialFont;
 
 const Header = () => (
   <div className='header'

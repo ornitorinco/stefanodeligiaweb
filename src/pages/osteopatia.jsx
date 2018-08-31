@@ -3,26 +3,30 @@ import '../layouts/styles.css'
 import React, { Component, Fragment } from 'react'
 import { render } from 'react-dom'
 import lodash from 'lodash'
-import { Icon } from 'antd'
+import { Icon, Row } from 'antd'
 import { Grid, Slug, Fade } from 'mauerwerk'
 import data from './osteopatia/data'
 import Images from '../img/images';
+import { background, font, specialFont, enhanceDark, enhanceLight, gold } from '../layouts/colors.css';
 
-const Cell = ({ toggle, name, height, description, subTitle, css, image, maximized }) => (
+const colors = {background: background, font: font, specialFont: specialFont, enhanceDark: enhanceDark, enhanceLight: enhanceLight, gold: gold};
+console.log(colors['background']);
+
+const Cell = ({ toggle, name, height, description, subTitle, gradientDirection, colorStart, colorEnd, image, maximized }) => (
   <div
     className="cell"
-    style={{ backgroundImage: css, cursor: !maximized ? 'pointer' : 'auto' }}
+    style={{ backgroundImage: `linear-gradient(${gradientDirection}, ${colors[colorStart]} 0%, ${colors[colorEnd]} 100%)`, cursor: !maximized ? 'pointer' : 'auto' }}
     onClick={!maximized ? toggle : undefined}>
     <Fade show={maximized} delay={maximized ? 400 : 0}>
       <div className="details">
         <Slug delay={600}>
-          <div className="circle" style={{ background: css }} ></div>
+          <div className="circle" style={{ background: `linear-gradient(${gradientDirection}, ${colors[colorStart]} 0%, ${colors[colorEnd]} 100%)` }} ></div>
           <div className="close">
             <Icon type="close" style={{ cursor: 'pointer' }} onClick={toggle} />
           </div>
           <h1 className="name">{name}</h1>
           <p  className="subTitle">{subTitle}</p>
-          <p  className="description">{description}</p>
+          <p  className="description" dangerouslySetInnerHTML={{ __html: description }} ></p>
         </Slug>
       </div>
     </Fade>
@@ -32,8 +36,10 @@ const Cell = ({ toggle, name, height, description, subTitle, css, image, maximiz
       enter={{ opacity: 1, transform: 'translate3d(0,0px,0)' }}
       leave={{ opacity: 0, transform: 'translate3d(0,-50px,0)' }}
       delay={maximized ? 0 : 400}>
-      <div className="default" style={{ backgroundImage: Images[image] ? `url(${(Images[image])})` : css , backgroundSize: 'cover'}}>
-      <p>{name}</p></div>
+      <div className="default" style={{ backgroundImage: `linear-gradient(${gradientDirection}, ${colors[colorStart]} 0%, ${colors[colorEnd]} 100%)` , backgroundSize: 'cover'}}>
+      <p>{name}</p>
+      <div className="shuffleImage" style={{ backgroundImage: `url(${(Images[image])})`, width:200, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', height: height -30}}></div>
+      </div>
     </Fade>
   </div>
 )
