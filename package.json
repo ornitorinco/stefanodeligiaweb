@@ -18,6 +18,7 @@
     "react-helmet": "^5.2.0",
     "react-measure": "^2.1.0",
     "react-protected-mailto": "^1.0.3",
+    "react-recaptcha": "^2.3.10",
     "react-scripts": "^1.1.5",
     "react-spring": "^5.6.6"
   },

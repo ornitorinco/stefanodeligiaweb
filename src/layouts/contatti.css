@@ -1,0 +1,7 @@
+@value colors: "./colors.css";
+@value enhanceDark, enhanceLight, background, font, specialFont, gold from colors;
+
+.submitButton{
+	background-color: background;
+	color:gold;
+}
