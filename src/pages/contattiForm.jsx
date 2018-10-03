@@ -2,14 +2,13 @@ import 'antd/dist/antd.css'
 import '../layouts/contatti.css'
 import React, { Component, Fragment } from 'react'
 import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
-import Recaptcha from 'react-recaptcha';
-
-class RecaptchaItem extends React.Component {
-  verifyCallback = (result) => {
-    console.log('verifyCallback', result);
-    this.props.onChange(result); // notify the form after verified
+import Recaptcha from 'react-google-recaptcha';
+    
+class ContattiForm extends React.Component {
+  state = {
+    autoCompleteResult: [],
   };
-  
+
   componentDidMount() {
     const script = document.createElement("script");
     script.src = "https://www.google.com/recaptcha/api.js";
@@ -17,23 +16,17 @@ class RecaptchaItem extends React.Component {
     document.body.appendChild(script);
   }
 
-  render() {
-    return (
-        <Recaptcha
-          sitekey="6LdJUG4UAAAAAGjtjPP7UfGepGgpLUymPTk1NhTF"
-          size="normal"
-          render="explicit"
-          hl="it"
-        />
-    );
+  triggerChange = (changedValue) => {
+    // Should provide an event to pass value to Form.
+    const onChange = this.props.onChange;
+    if (onChange) {
+      onChange(Object.assign({}, this.state, changedValue));
+    }
   }
-}
 
-    
-class ContattiForm extends React.Component {
-  state = {
-    autoCompleteResult: [],
-  };
+  handleChange(value) {
+    this.triggerChange({value});
+  }
 
 	handleSubmit = (e) => {
     e.preventDefault();
@@ -43,6 +36,10 @@ class ContattiForm extends React.Component {
       }
     	});
   	}
+
+  handleReCaptcha = (rule, value, callback) => {
+    grecaptcha.getResponse().length !== 0 ? callback() : callback("Mettere il segno di spunta per confermare di essere un utente reale.");
+ }
 	
 	render(){
 	const { autoCompleteResult } = this.state;
@@ -57,11 +54,11 @@ class ContattiForm extends React.Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 },
+        sm: { span: 4 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 },
+        sm: { span: 20 },
       },
     };
     const tailFormItemLayout = {
@@ -85,6 +82,8 @@ class ContattiForm extends React.Component {
       </Select>
     );
 
+    const valueFormatter = e => {debugger};
+    
     return <Form onSubmit={this.handleSubmit}>
         <FormItem
           {...formItemLayout}
@@ -133,14 +132,25 @@ class ContattiForm extends React.Component {
           extra="Metti il segno di spunta per verificare che sia un utente reale."
         >
               {getFieldDecorator('captcha', {
-                rules: [{ required: true, message: 'Verificare che si tratti di un utente reale' }],
-              })(
-                <RecaptchaItem />
+                validateTrigger: 'onChange',
+                trigger: 'onChange',
+                rules: [{ required: true, message: 'Verificare che si tratti di un utente reale'}, {
+                  validator: this.handleReCaptcha
+            }],
+              })(                
+            <Recaptcha
+              sitekey="6LdJUG4UAAAAAGjtjPP7UfGepGgpLUymPTk1NhTF"
+              size="normal"
+              render="explicit"
+              hl="it"
+              onChange= {this.handleChange.bind(this)}
+              ref={(r) => this.recaptcha = r, (r) => this.value = undefined}
+            />
               )}
         </FormItem>
         
         <FormItem {...tailFormItemLayout}>
-          <Button icon="mail" size="large" className="submitButton" htmlType="submit">Invia</Button>
+          <Button id="submit" icon="mail" size="large" className="submitButton" htmlType="submit">Invia</Button>
         </FormItem>
       </Form>
 	}
